@@ -1,14 +1,29 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import {BrowserRouter as Router, Redirect, Route, Switch, Link} from 'react-router-dom'
 
-import 'font-awesome/css/font-awesome.min.css'
-import './index.css'
-import './index.scss'
+import Layout from 'components/layout/index.jsx'
+import Home from 'page/home/index.jsx'
+
+class App extends Component {
+    render() {
+        return (
+            <Router>
+                <Layout>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/product" component={Home} />
+                        <Route path="/product.category" component={Home} />
+                    </Switch>
+                </Layout>
+            </Router>
+        )
+    }
+}
+
 
 ReactDOM.render(
-    <div>
-        <i className='fa fa-book'></i>
-        <h1>hello, webpack！</h1>
-    </div>,
+    <App />,
     document.getElementById('app')
 )
+
